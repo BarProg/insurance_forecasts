@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<style>
+    form{
+        margin:auto;
+        width: 35%;
+    }
+
+    .result{
+        margin:auto;
+        width: 35%;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<head>
+    <title>Прогнозирование суммы страховки</title>
+</head>
+
+<form action='{{url_for("home")}}' method="POST">
+    <fieldset>
+        <legend>Введите значения</legend>
+        Возраст <input name="age" type="number" required>
+        <br>
+        <br>
+        Пол <select name="sex">
+            <option>male</option>
+            <option>female</option>
+        </select>
+        <br>
+        <br>
+        BMI <input name="bmi" type="number" step=0.001 required>
+        <br>
+        <br>
+        Количество детей <input name="children" type="number" required>
+        <br>
+        <br>
+        Курение <select name="smoker">
+            <option>yes</option>
+            <option>no</option>
+        </select>
+        <br>
+        <br>
+        Регион <select name="region">
+            <option>southwest</option>
+            <option>southeast</option>
+            <option>northwest</option>
+            <option>northeast</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit", name="Спрогнозировать">
+    </fieldset>
+</form>
+
+<div class="result" align="center">
+    {% if result %}
+    <br>
+    <p style="font-size: 30px;">
+    Сумма страховки:
+    </p>
+    <p style="font-size: 30px;">
+    {{result}}
+    </p>
+    {% endif %}
+</div>
